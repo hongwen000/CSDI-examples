@@ -50,20 +50,24 @@ fun MyApp() {
             )
         }
 
-        Button(
-            // 点击按钮时，修改 textVisible 状态的值为 false，引擎会重新渲染组件树，去除 Text 组件
-            onClick = { textVisible = false },
-        ) {
-            Text("Button 1")
-        }
+        Row {
+            Button(
+                // 点击按钮时，修改 textVisible 状态的值为 false，引擎会重新渲染组件树，去除 Text 组件
+                onClick = { textVisible = false },
+            ) {
+                Text("Button 1")
+            }
 
-        Button(
-            // 点击按钮时，修改 textContent 状态的值为 "Button 2 clicked"，新的UI状态的值导致引擎重新渲染组件树
-            // 与命令式编程不同，onClick并不直接访问View Tree，而是把复杂性交给引擎，由引擎处理状态变更
-            // 因而 textVisible 状态的值为 false时，正确实现的引擎会判断到Text不再存在，不应将 textContent的值设置到该View，所以不会导致程序崩溃
-            onClick = { textContent = "Button 2 clicked" },
-        ) {
-            Text("Button 2")
+            Spacer(modifier = Modifier.width(8.dp))
+
+            Button(
+                // 点击按钮时，修改 textContent 状态的值为 "Button 2 clicked"，新的UI状态的值导致引擎重新渲染组件树
+                // 与命令式编程不同，onClick并不直接访问View Tree，而是把复杂性交给引擎，由引擎处理状态变更
+                // 因而 textVisible 状态的值为 false时，正确实现的引擎会判断到Text不再存在，不应将 textContent的值设置到该View，所以不会导致程序崩溃
+                onClick = { textContent = "Button 2 clicked" },
+            ) {
+                Text("Button 2")
+            }
         }
     }
 }
