@@ -50,7 +50,7 @@ fun MyApp() {
             )
         }
 
-        Row {
+        Row() {
             Button(
                 // 点击按钮时，修改 textVisible 状态的值为 false，引擎会重新渲染组件树，去除 Text 组件
                 onClick = { textVisible = false },
